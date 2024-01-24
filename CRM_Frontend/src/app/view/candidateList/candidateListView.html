@@ -1,0 +1,40 @@
+<div class="container mt-4 mb-4 pt-4" style="min-height: 800px;">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <!-- <div class="card cardBackGround border _border ">
+        <label class="text-secondary">This is just a search bar</label>
+      </div> -->
+    </div>
+    <div class="col-12 mt-2">
+      <div class="card cardBackGround border _border ">
+        <div class="row text-secondary text_font text_middle text-center m-2 border-bottom _border _border">
+          <div class="col-2">Id</div>
+          <div class="col-3">Candidate</div>
+          <div class="col-3">Recruiter</div>
+          <div class="col-2">Experience</div>
+          <div class="col-1">Visa</div>
+          <div class="col-1">
+            <button class="btn btn-lg btn-success px-2 py-0 mb-1" (click)="showAddNewAccountView()" *ngIf="addCandidateRight == true"><i class="bi bi-person-add"></i></button>
+          </div>
+        </div>
+        <div class="text-secondary text_font text_table text-center m-2" style="height: 400px; overflow: auto">
+          <div *ngFor="let candidate of allCandidate">
+            <div class="row py-0 border-bottom _border " (click)="showCandidateDetail(candidate.candidateId)">
+              <div class="col-2">{{candidate.candidateId}}</div>
+              <div class="col-3">{{candidate.firstName + "  "+candidate.middleName+" "+candidate.lastName|SNVApipeStringCutOff:12}}</div>
+              <div class="col-3">{{candidate.recruiterName|SNVApipeStringCutOff:9}}</div>
+              <div class="col-2">{{candidate.workExperience}}</div>
+              <div class="col-1">{{candidate.visaStatus}}</div>
+              <div class="col-1">
+                <i class="bi bi-search" ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row m-2 text-secondary text_font justify-content-end border-top _border">
+          Page:1
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

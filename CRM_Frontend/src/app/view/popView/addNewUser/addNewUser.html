@@ -1,0 +1,53 @@
+<br>
+<div class="col-md-6 offset-md-3">
+
+        <figure class="text-center">
+            <blockquote class="blockquote">
+            <p>Add New Account</p>
+            </blockquote>
+      </figure>
+    <h4 class="text-center text-dark fs-5 fst-normal"></h4>
+    <br>
+    <!-- we will se ngSubmit event and we assign it to an eventHandler onSubmit(), this will 
+    be defined in the component -->
+    <form>
+        <div class="form-group">
+            <!-- <label>First Name</label> -->
+            <input type="text" class="form-control border-secondary" name="firstname" id="firstName" required placeholder="First Name">
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="text" class="form-control border border-secondary" name="lastname" id="lastName" required placeholder="Last Name">
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="email" class="form-control border-secondary" name="username" id="username" required placeholder="UserID/Email">
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="text" class="form-control border-secondary" name="phone" id="phone" required placeholder="Phone Number">
+        </div>
+        <br>
+        <div class="form-group">
+            <select id="role" class="form-control text_font fst-italic border-secondary" aria-placeholder="Role">
+                <option value=""disabled selected hidden>
+                    <figure class="text-center">
+                        <figcaption class="blockquote-footer">
+                          Choose Role ...
+                        </figcaption>
+                      </figure>
+                </option>
+                <option *ngFor="let r of roleList">{{r}}</option>
+              </select>
+        </div>
+        <br>
+        <div class="row m-2 justify-content-center">
+            <div class="col-6">
+              <div id="errorMessage"></div>
+            </div>
+        </div>
+        <div class="col-11 text-center mb-5">
+          <button class="btn btn-primary py-1" (click)="submit()">Submit</button>
+        </div>
+    </form>
+</div>

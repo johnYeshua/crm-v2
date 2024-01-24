@@ -1,0 +1,61 @@
+<h3 class="card-title text-center border-bottom _border pb-4 text-secondary text_font">Account Info</h3>
+<div style="min-height: 260px">
+    <div class="row m-4 mt-4">
+        <div class="col-4 pe-4 justify-content-end">
+            <img class="img_lg img_radius" src="https://media.istockphoto.com/id/522855255/vector/male-profile-flat-blue-simple-icon-with-long-shadow.jpg?s=612x612&w=0&k=20&c=EQa9pV1fZEGfGCW_aEK5X_Gyob8YuRcOYCYZeuBzztM=">
+        </div>
+        <div class="col-8 text-start">
+            <div class="row mt-2">
+                <div class="col-4">
+                    <label class="text_font text-secondary">User Name</label>
+                </div>
+                <div class="col-8">
+                    <label class="text_font text-secondary">{{this.currentUser.firstName + " " + this.currentUser.lastName}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label class="text_font text-secondary">Role</label>
+                </div>
+                <div class="col-8">
+                    <label class="text_font text-secondary">{{this.currentUser.role | SNVApipeGetAccountRole}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label class="text_font text-secondary">Status</label>
+                </div>
+                <div class="col-8">
+                    <label class="text_font text-secondary">{{this.currentUser.accountNonLocked | SNVApipeGetAccountStatus}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label class="text_font text-secondary">Phone</label>
+                </div>
+                <div class="col-8">
+                    <label class="text_font text-secondary">{{this.currentUser.phone}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label class="text_font text-secondary">Email</label>
+                </div>
+                <div class="col-8">
+                    <label class="text_font text-secondary">{{this.currentUser.username}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label class="text_font text-secondary">Address</label>
+                </div>
+                <div class="col-8">
+                    <label class="text_font text-secondary">{{this.currentUser.addressLine1}}</label><br>
+                    <label class="text_font text-secondary">{{this.currentUser.addressLine2}}</label><br *ngIf = "this.currentUser.addressLine2!=''">
+                    <label class="text_font text-secondary">{{this.currentUser.addressCity + ", " + this.currentUser.addressState}}</label><br>
+                    <label class="text_font text-secondary">{{this.currentUser.addressZipCode}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

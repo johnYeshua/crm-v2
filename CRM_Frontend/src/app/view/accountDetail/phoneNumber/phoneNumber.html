@@ -1,0 +1,24 @@
+<h3 class="card-title text-center border-bottom _border pb-4 text-secondary text_font">Phone Number</h3>
+<div style="min-height: 260px">
+    <div class="row m-3 mt-5">
+        <div class="col-4 text-end">
+            <label class="text_font text-secondary">Original</label>
+        </div>
+        <div class="col-4 text-start">
+            <label class="text_font text-secondary">{{this.currentUser.phone}}</label>
+            <!--<input class="form-control text_font" type="text" value="{{this.currentUser.phone}}" readonly>-->
+        </div>
+    </div>
+    <div class="row m-3 mt-5">
+        <div class="col-4 text-end">
+            <label class="text_font text-secondary">New</label>
+        </div>
+        <div class="col-4 text-end">
+            <input class="form-control text_font" type="text" value="" id="newPhone">
+        </div>
+    </div>
+    <div id="errorMessage"></div>
+</div>
+<div class="col-sm-12 text-end mt-4 pt-2">
+    <button class="btn btn-primary mb-3 btn-lg py-1 px-5 ms-4" (click)="updatePhone()">Update</button>
+</div>

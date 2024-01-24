@@ -1,0 +1,58 @@
+<div class="container mt-4 mb-4 pt-4" style="min-height: 800px;">
+  <div class="row g-3 m-2">
+    <div class="col-sm-3 p-2">
+      <div class="card border _border cardBackGround" style="min-height: 600px;">
+        <div class="card-body text-center">
+          <!-- left menu bar Read and Write-->
+          <div class="row g-3" *ngIf="authorization == 'readAndWrite'">
+            <app-menu-bar [firstName]='currentUser.firstName' [lastName]='currentUser.lastName' (currentStatus) = 'changeStatus($event)'></app-menu-bar>
+          </div>
+          <!-- left menu bar Read Only-->
+          <div class="row g-3" *ngIf="authorization != 'readAndWrite'">
+            <app-menu-bar-read-only [firstName]='currentUser.firstName' [lastName]='currentUser.lastName'></app-menu-bar-read-only>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9 p-2">
+      <div class="card border _border p-2 cardBackGround" style="height: 600px;">
+        <div class="card-body text-center">
+          <!-- Unknown My Account Role -->
+          <div class="row g-0" *ngIf="authorization == 'notAccess'">
+            <app-error-page [erroeMessage]='erroeMessage'></app-error-page>
+          </div>
+          <!-- Can Not Loading User Data -->
+          <div class="row g-0" *ngIf="authorization != 'notAccess' && currentUser.userId == -1">
+            <app-error-page [erroeMessage]='erroeMessage'></app-error-page>
+          </div>
+          <!-- Read Only -->
+          <div class="row g-0" *ngIf="authorization == 'readOnly' && currentUser.userId != -1">
+            <div class="card-body cardBackGround">
+              <app-account-info-read-only [currentUser]='currentUser'></app-account-info-read-only>
+              <!-- <app-can-suspend [currentUser]='currentUser' [canSuspend]='canSuspend'></app-can-suspend> -->
+            </div>
+          </div>
+          <!-- Read and Write -->
+          <div class="row g-0" *ngIf="authorization == 'readAndWrite'  && currentUser.userId != -1">
+            <div class="card-body" *ngIf="currentStatus == 'accountInfo'">
+              <app-account-info [currentUser]='currentUser' [canSuspend]='canSuspend'></app-account-info>
+              <!-- <app-can-suspend [currentUser]='currentUser' [canSuspend]='canSuspend'></app-can-suspend> -->
+            </div>
+            <!-- Update Phone -->
+            <div class="card-body" *ngIf="currentStatus == 'phoneNumber'">
+              <app-phone-number [currentUser]='currentUser' [isMyAccount]="isMyAccount"></app-phone-number>
+            </div>
+            <!-- Reset Password -->
+            <div class="card-body" *ngIf="currentStatus == 'resetPassword'">
+              <app-password [currentUser]='currentUser' [isMyAccount]="isMyAccount"></app-password>
+            </div>
+            <!-- Update Address -->
+            <div class="card-body" *ngIf="currentStatus == 'mailAddress'">
+              <app-address [currentUser]='currentUser' [isMyAccount]="isMyAccount"></app-address>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

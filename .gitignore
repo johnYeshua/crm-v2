@@ -1,0 +1,4 @@
+/target/
+src/main/resources/application.properties
+CRM_Frontend/node_modules
+CRM_Frontend/.angular

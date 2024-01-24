@@ -1,0 +1,212 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+/* ===================================== Import Variables ================================== */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
+@import url(https://fonts.googleapis.com/css?family=Arimo:300,400,400italic,700,700italic);
+/* ===================================== Basic CSS ==================================== */
+
+/* body{
+  background-color: #f2f2f2;
+} */
+
+#btns{
+  background-color: #2b3990;
+  color: #ffffff;
+}
+
+._input{
+  min-height: 45px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid #ffffff;
+  /* border: 1px solid #2b3990; */
+}
+
+#_text_h:hover
+{
+  color: rgb(165, 165, 165) !important;
+}
+
+footer{
+  background: #000;
+  padding:30px 0;
+  color: #fff;
+  width: 100%;
+  min-height: 90px;
+  float: left;
+  margin-top:0 !important;
+  z-index:99999;
+}
+
+.cardBackGround
+{
+  background-color: #f8f9fa;
+  border: 1px solid #f3f3f3 !important;
+  /* background-color: #e1ebfd; */
+  color:black !important;
+  border-color: rgb(224, 224, 224) !important;
+}
+
+.title{
+  color: #000000;
+  font-size: 40px;
+  font-family: "Open Sans";
+  padding-top: 40px;
+}
+._border{
+  border-color: rgb(224, 224, 224);
+}
+
+.text_hover:hover
+{
+  color: rgb(165, 165, 165) !important;
+}
+
+.text_title
+{
+  color:#000000;
+  font-size: 40px;
+}
+
+.text_font
+{
+  font-family:"courier new", courier, monospace;
+}
+
+.text_bold
+{
+  font-weight: 800;
+}
+
+.text_middle
+{
+  font-size: 1.3em;
+}
+
+.text_table
+{
+  font-size: 1em;
+}
+
+.text_error
+{
+  color: #f00;
+}
+
+/* table data cells padding*/
+td,th {padding: .5em 1em;}
+
+tbody:before {
+  content:"@";
+  display:block;
+  line-height:10px;
+  text-indent:-99999px;
+}
+
+tbody{
+  font-family:'Courier New', Courier, monospace;
+  font-size: 14px;
+}
+
+th{ 
+  border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+/* row box-shadow when hovering */
+/* tr:hover td {
+    -moz-box-shadow: 0 4px 2px -3px rgba(0, 123, 255, 0.5) inset !important;
+    -webkit-box-shadow: 0 4px 2px -3px rgba(0, 123, 255, 0.5) inset !important;
+    box-shadow: 0 4px 2px -3px rgba(0, 123, 255, 0.5) inset !important;
+}
+tr:hover td:first-child {
+    -moz-box-shadow: 4px 4px 2px -3px rgba(0, 123, 255, 0.5) inset !important;
+    -webkit-box-shadow: 4px 4px 2px -3px rgba(0, 123, 255, 0.5) inset !important;
+    box-shadow: 4px 4px 2px -3px rgba(0, 123, 255, 0.5) inset !important;
+}
+tr:hover td:last-child {
+    -moz-box-shadow: 0 4px 2px -3px rgba(0, 123, 255, 0.5) inset !important;
+    -webkit-box-shadow: 0 4px 2px -3px rgba(0, 123, 255, 0.5) inset !important;
+    box-shadow: 0 4px 2px -3px rgba(0, 123, 255, 0.5) inset !important;
+} */
+
+tr:hover{
+  border-bottom: 1px solid rgba(0, 123, 255, 0.5) !important;
+  border-radius: 10rem !important;
+}
+tr:nth-child(even):hover { background: rgba(216, 216, 216, 0.941) !important; }
+
+tr:nth-child(odd):hover { background: #ffffff !important; }
+
+tr:hover td { background: transparent !important; }
+
+.sub-text{
+  font-size: small;
+}
+
+.btn-long-bar {
+  display: block;
+  width: 35%;
+  padding: 10px 20px; /* Adjust padding as needed */
+  text-align: center;
+}
+
+.img_roll
+{
+  border-radius: 50%;
+}
+
+.img_radius
+{
+  border-radius: 20%;
+}
+
+
+
+.img_square
+{
+  border-radius: 50%;
+}
+
+.img_lg
+{
+  height: 200px;
+  width: 200px;
+}
+
+.popBox
+{
+  margin-top: 16em;
+  text-align: center;
+  align-items: center;
+}
+
+.popBox-h
+{
+  margin-top: 10em;
+  text-align: center;
+  background-color:transparent;
+}
+
+.progress
+{
+  height: 10px;
+  width: 100%;
+}
+
+.progress-bar
+{
+  bottom: 0px;
+  height: 10px;
+  background: #0af;
+  position: relative;
+  animation: animate-positive;
+  animation-duration: 3s;
+}
+
+@keyframes animate-positive {
+  0% { width: 0%;}
+}
+
+

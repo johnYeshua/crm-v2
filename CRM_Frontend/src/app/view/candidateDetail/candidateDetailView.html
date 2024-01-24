@@ -1,0 +1,478 @@
+<div class="container mt-4 mb-4 pt-4" style="min-height: 800px;">
+  <div *ngIf="pageStatus=='recruiter'"><!-- For Recruiter -->
+    <div class="row g-3 m-2">
+      <div class="col-sm-1 p-2"></div>
+      <div class="col-sm-10 p-2">
+        <div class="card cardBackGround _border text-secondary text_font" *ngIf="candidateP1Right==true">
+          <div class="row m-2 text-start">
+            <div class="col-6"><h5>Candidate Id: {{currentCandidate.candidateId}}</h5></div>
+            <div class="col-6 text-end"><h5>RecruiterName: {{currentCandidate.recruiterName}}</h5></div>
+            <hr>
+            <div class="row">
+              <div class="col-3">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" class="form-control" [(ngModel)]="currentCandidate.firstName">
+              </div>
+              <div class="col-2">
+                <label for="middleName">Middle Name:</label>
+                <input type="text" id="middleName" name="middleName" class="form-control" [(ngModel)]="currentCandidate.middleName">
+              </div>
+              <div class="col-3">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName"  class="form-control" [(ngModel)]="currentCandidate.lastName">
+              </div>
+              <div class="col-4">
+                <label for="source" style="margin-left:150px">Source:</label>
+                <input type="text" id="source" list="sourceList" name="source" class="form-control" style="margin-left:150px; width:150px" [(ngModel)]="currentCandidate.details.source">
+                <datalist id="sourceList">
+                  <option *ngFor="let s of menuData.SOURCE">{{s}}</option>
+                </datalist>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-8">
+                    <label for="school">School:</label>
+                    <input type="text" id="school" name="school" class="form-control" [(ngModel)]="currentCandidate.school">
+                  </div>
+                  <div class="col-4">
+                    <label for="degree">Degree:</label>
+                    <select id="degree" name="degree"  class="form-select" [(ngModel)]="currentCandidate.degree">
+                      <option>{{currentCandidate.degree}}</option>
+                      <option *ngFor="let d of menuData.DEGREE">{{d}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <label for="visaStatus">Visa Status:</label>
+                    <select id="visaStatus" name="visaStatus"  class="form-select" [(ngModel)]="currentCandidate.visaStatus">
+                      <option>{{currentCandidate.visaStatus}}</option>
+                      <option *ngFor="let v of menuData.VISA_STATUS">{{v}}</option>
+                    </select>
+                  </div>
+                  <div class="col-8">
+                    <label for="ssn">SSN:</label>
+                    <input type="text" id="ssn" name="ssn" class="form-control" [(ngModel)]="currentCandidate.ssn">
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="row mt-5">
+                  <div class="col-4 text-end">
+                    <label for="resume">Resume:</label>
+                  </div>
+                  <div class="col-6">
+                    <input type="file" id="resume" name="resume" (change)="onResumeUpload($event)" class="form-control-file">
+                  <p *ngIf="!isPdfResume">Files must be PDF</p>
+                  </div>
+                </div>
+                <div class="row mt-4">
+                  <div class="col-4 text-end"><label for="otherFile">Other Files:</label></div>
+                  <div class="col-6"><input type="file" id="otherFile" name="otherFile" (change)="onFileUpload($event)" class="form-control-file"></div>
+                  <p *ngIf="!isPdfFile">Files must be PDF</p>
+                </div>
+                 <div *ngIf="currentCandidate.attachments.length!=0" class="row mt-4">
+                  <div  class="col-4 text-end"><label for="otherFile">Uploaded Files:</label></div>
+                  <div class="col-6 text-end" >
+                    <a class="link-opacity-100" *ngFor="let attachment of currentCandidate.attachments" (click)="download(attachment.attachment)">{{attachment.attachment}} <br/></a>
+                  </div>
+                  
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <div class="row m-2 text-start">
+            <div class="col-6">
+              <h5>Contact Information</h5>
+              <hr>
+              <div class="row mt-2">
+                <div class="col-6">
+                  <label for="emailId">Email ID:</label>
+                  <input type="email" id="emailId" name="emailId" class="form-control" [(ngModel)]="currentCandidate.email">
+                </div>
+                <div class="col-6">
+                  <label for="phoneNumber">Phone Number:</label>
+                  <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" [(ngModel)]="currentCandidate.phoneNumber">
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-12">
+                  <label class="border-bottom _border">Address:</label>
+                  <div class="row mt-2">
+                    <div class="col-7">
+                      <label class="text_font text-secondary">Line 1</label>
+                      <input class="form-control text_font" type="text" [(ngModel)]="currentCandidate.details.addressLine1">
+                    </div>
+                    <div class="col-4">
+                      <label class="text_font text-secondary">Line 2</label>
+                      <input class="form-control text_font" type="text" [(ngModel)]="currentCandidate.details.addressLine2">
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-5">
+                      <label class="text_font text-secondary">Country</label>
+                      <select id="addressCountry" class="form-select text_font" formControlName="country" (change)="handleCountryChange()">
+                        <option>{{this.addressCountry}}</option>
+                        <option *ngFor="let country of countries">{{country.label}}</option>
+                      </select>
+                    </div>
+                    <div class="col-5">
+                      <label class="text_font text-secondary">State</label>
+                      <select  id="addressState" class="form-select text_font" formControlName="state" (change)="handleStateChange()">
+                        <option>{{this.addressState}}</option>
+                        <option *ngFor="let state of states">{{ state.label}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-6">
+                      <label class="text_font text-secondary">City</label>
+                      <select  id="addressCity" class="form-select text_font" formControlName="lga">
+                        <option>{{this.addressCity}}</option>
+                        <option *ngFor="let lga of lgas">{{ lga.label }}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row mt-2">
+                    <div class="col-4">
+                      <label class="text_font text-secondary">ZipCode</label>
+                      <input class="form-control text_bold text_font" type="text" [(ngModel)]="currentCandidate.details.addressZipCode">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <h5>Skill Set</h5>
+              <hr>
+              <div class="row mt-2">
+                <div class="col-4">
+                  <label>Skill:</label>
+                  <input type="text" class="form-control" [(ngModel)]="currentCandidate.details.skillSet">
+                </div>
+                <div class="col-7">
+                  <label>Work Experience:</label>
+                  <div class="row">
+                    <div class="col-6"><input type="number" class="form-control" placeholder="year(s)"  [(ngModel)]="workExpYear" ></div>
+                    <div class="col-6"><input type="number" class="form-control" placeholder="mouth(s)" [(ngModel)]="workExpMouth"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-10">
+                  <label>Communication Skill:{{currentCandidate.details.communicationSkill}}</label>
+                  <input type="range" class='mt-2' max="10"  id="myRange" [(ngModel)]="currentCandidate.details.communicationSkill">
+                </div>
+              </div>
+              <h5 class="mt-5">Interview Schedule</h5>
+              <hr>
+              <div class="row mt-2">
+                <div class="col-5">
+                  <label>Date:</label>
+                  <input type="text" class="form-control" placeholder="{{currentCandidate.details.interviewDate}}" bsDatepicker formControlName="effectiveTime" placement="top" [bsConfig]="bsConfig" id="interviewDate">
+                </div>
+                <div class="col-5">
+                  <label>Interviewer:</label>
+                  <input type="text" class="form-control" [(ngModel)]="currentCandidate.details.interviewer">
+                </div>
+              </div>
+              <div class="row mt-5 mb-3">
+                <div class="col-9">
+                  <div id="errorMessage"></div>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-success px-4" (click)="add(currentCandidate)"  *ngIf="candidateId=='new'">Add</button>
+                  <button class="btn btn-success px-4" (click)="save(currentCandidate)" *ngIf="candidateId!='new'">SAVE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card cardBackGround _border text-secondary text_font" *ngIf="candidateP1Right==false">
+          <div class="row m-2 text-start">
+            <div class="col-6"><h5>Candidate Id: {{currentCandidate.candidateId}}</h5></div>
+            <div class="col-6 text-end"><h5>RecruiterName: {{currentCandidate.recruiterName}}</h5></div>
+            <hr>
+            <div class="row m-2">
+              <div class="col-6">
+                <div class="row mt-1">
+                  <div class="col-4 text-end"><label>Full Name: </label></div>
+                  <div class="col-8 text-start"><label>{{currentCandidate.firstName + ' ' + currentCandidate.middleName +' ' + currentCandidate.lastName}}</label></div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-4 text-end"><label>Source:</label></div>
+                  <div class="col-8 text-start"><label>{{currentCandidate.details.source}}</label></div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-4 text-end"><label>School:</label></div>
+                  <div class="col-8 text-start"><label>{{currentCandidate.school}}</label></div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-4 text-end"><label>Degree:</label></div>
+                  <div class="col-8 text-start"><label>{{currentCandidate.degree}}</label></div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-4 text-end"><label>Visa Status:</label></div>
+                  <div class="col-8 text-start"><label>{{currentCandidate.visaStatus}}</label></div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-4 text-end"><label>SSN:</label></div>
+                  <div class="col-8 text-start"><label>{{currentCandidate.ssn}}</label></div>
+                </div>
+              </div>
+              <div class="col-6">
+                <h5 class="mt-1">Interview Schedule</h5>
+                <hr>
+                <div class="row mt-2">
+                  <div class="col-4 text-end"><label>Date:</label></div>
+                  <div class="col-8 text-start"><label>{{currentCandidate.details.interviewDate}}</label></div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-4 text-end"><label>Interviewer:</label></div>
+                  <div class="col-8 text-start"><label>{{currentCandidate.details.interviewer}}</label></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row m-2 text-start">
+            <div class="col-6">
+              <h5>Contact Information</h5>
+              <hr>
+              <div class="row mt-2">
+                <div class="col-4 text-end"><label>Email ID:</label></div>
+                <div class="col-8 text-start"><label>{{currentCandidate.email}}</label></div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-4 text-end"><label>Phone Number:</label></div>
+                <div class="col-8 text-start"><label>{{currentCandidate.phoneNumber}}</label></div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-4 text-end"><label>Address:</label></div>
+                <div class="col-8 text-start">
+                  <div class="row"><label>{{currentCandidate.details.addressLine1}}</label></div>
+                  <div class="row" *ngIf="currentCandidate.details.addressLine2 != ''"><label>{{', ' + currentCandidate.details.addressLine2}}</label></div>
+                  <div class="row"><label>{{currentCandidate.details.addressCity + ", " + currentCandidate.details.addressState}}</label></div>
+                  <div class="row"><label>{{currentCandidate.details.addressZipCode}}</label></div>
+                  <div class="row"><label>{{currentCandidate.details.addressCounty}}</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <h5>Skill Set</h5>
+              <hr>
+              <div class="row mt-2">
+                <div class="col-4 text-end"><label>Skill:</label></div>
+                <div class="col-8 text-start"><label>{{currentCandidate.details.skillSet}}</label></div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-4 text-end"><label>Experience:</label></div>
+                <div class="col-8 text-start"><label>{{currentCandidate.workExperience}}</label></div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-4 text-end"><label>Communication:</label></div>
+                <div class="col-8 text-start"><label>{{currentCandidate.details.communicationSkill}}</label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-1 p-2">
+        <div class="d-flex justify-content-center align-items-center" (click)="chanegStatus('techBD')" *ngIf="candidateId != 'new'">
+          <button class="btn btn-secondary btn-lg ps-2">
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="pageStatus =='techBD'">
+    <div class="row g-3 m-2">
+      <div class="col-sm-1 p-2">
+        <div class="d-flex justify-content-center align-items-center" (click)="chanegStatus('recruiter')">
+          <button class="btn btn-secondary btn-lg ps-2">
+            <i class="bi bi-arrow-left"></i>
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-10 p-2">
+        <div class="card cardBackGround _border text-secondary text_font">
+          <div class="row mt-2">
+            <div class="col-4"><h5>CandidateName:</h5></div>
+            <div class="col-4"><h5>RecruiterName:</h5></div>
+            <div class="col-4"><h5>Interviewer:</h5></div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-4"><h5>{{currentCandidate.firstName + ' ' + currentCandidate.middleName + " " + currentCandidate.lastName}}</h5></div>
+            <div class="col-4"><h5>{{currentCandidate.recruiterName}}</h5></div>
+            <div class="col-4"><h5>{{currentCandidate.details.interviewer}}</h5></div>
+          </div>
+          <hr>
+          <div class="row mt-2 mb-4">
+
+            <!-- Tech -->
+            <div class="col-6" *ngIf="candidateP2Right == true">
+              <div class="row">
+                <div class="col-12"><h5>Interview Feedback</h5><hr></div>
+                <div class="row m-2">
+                  <div class="col-5 text-end">
+                    <label>Interview Time: </label>
+                  </div>
+                  <div class="col-7 text-start">
+                    <label>{{currentCandidate.details.interviewDate}}</label>
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-5 text-end">
+                    <label>Candidate Status: </label>
+                  </div>
+                  <div class="col-5">
+                    <select class="form-select" [(ngModel)]="currentCandidate.details.candidateInterviewStatus">
+                      <option *ngFor="let i of menuData.INTERVIEW_STATUS">{{i}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-5 text-end">
+                    <label> Feedback: </label>
+                  </div>
+                  <div class="col-7">
+                    <textarea class="form-control" [value]="currentCandidate.details.interviewerFeedback" [(ngModel)]="currentCandidate.details.interviewerFeedback"></textarea>
+                    <!--<input type="text" list="interviewFeedback" class="form-control" [(ngModel)]="currentCandidate.details.interviewerFeedback">-->
+                    <!--<datalist id = 'interviewFeedback'>
+                      <option *ngFor="let i of menuData.INTERVIEW_FEEDBACK">{{i}}</option>
+                    </datalist>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6" *ngIf="candidateP2Right == false">
+              <div class="row">
+                <div class="col-12"><h5>Interview Feedback</h5><hr></div>
+                <div class="row m-2">
+                  <div class="col-5 text-end">
+                    <label>Interview Time: </label>
+                  </div>
+                  <div class="col-7 text-start">
+                    <label>{{currentCandidate.details.interviewDate}}</label>
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-5 text-end">
+                    <label>Candidate Status: </label>
+                  </div>
+                  <div class="col-5 text-start">
+                    <label>{{currentCandidate.details.candidateInterviewStatus}}</label>
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-5 text-end">
+                    <label> Feedback: </label>
+                  </div>
+                  <div class="col-5 text-start">
+                    <p>{{currentCandidate.details.interviewerFeedback}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BD -->
+            <div class="col-6" *ngIf="candidateP3Right == true">
+              <div class="row mt-4">
+                <div class="col-5 text-end">
+                  <label>LOI Sent:</label>
+                </div>
+                <div class="col-6">
+                  <select  id="loiSent" class="form-select text_font">
+                    <option>{{loiSent}}</option>
+                    <option *ngFor="let l of menuData.LOI_SENT">{{l}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-5 text-end">
+                  <label>LOI Accept:</label>
+                </div>
+                <div class="col-6">
+                  <select  id="loiAccepted" class="form-select text_font">
+                    <option>{{loiAccepted}}</option>
+                    <option *ngFor="let l of menuData.LOI_ACCEPTED">{{l}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-5 text-end">
+                  <label>Joined Batch:</label>
+                </div>
+                <div class="col-6">
+                  <select  id="joinBatch" class="form-select text_font">
+                    <option>{{joinedBatch}}</option>
+                    <option *ngFor="let l of menuData.JOIN_BATCH">{{l}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-5 text-end">
+                  <label>Batch Start Date:</label>
+                </div>
+                <div class="col-6">
+                  <input type="text" class="form-control" placeholder="{{currentCandidate.details.startDate}}" bsDatepicker formControlName="effectiveTime" placement="top" [bsConfig]="bsConfig" id="batchStartDate">
+                </div>
+              </div>
+            </div>
+            <div class="col-6" *ngIf="candidateP3Right == false">
+              <div class="row mt-4">
+                <div class="col-5 text-end">
+                  <label>LOI Sent:</label>
+                </div>
+                <div class="col-6 text-start">
+                  <label>{{loiSent}}</label>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-5 text-end">
+                  <label>LOI Accepted:</label>
+                </div>
+                <div class="col-6 text-start">
+                  <label>{{loiAccepted}}</label>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-5 text-end">
+                  <label>Joined Batch:</label>
+                </div>
+                <div class="col-6 text-start">
+                  <label>{{joinedBatch}}</label>
+                </div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-5 text-end">
+                  <label>Batch Start Date:</label>
+                </div>
+                <div class="col-6 text-start">
+                  <label>{{currentCandidate.details.startDate}}</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-5">
+              <div class="col-9">
+                <div id="errorMessage"></div>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-success px-4" (click)="save(currentCandidate)">SAVE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-1 p-2">
+      </div>
+    </div>
+  </div>
+</div>
+
+

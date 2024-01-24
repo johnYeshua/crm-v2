@@ -1,0 +1,14 @@
+::ng-deep.bs-datepicker
+{
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+  font-family: "courier new", courier, monospace;
+  font-weight: 800;
+}
+
+::ng-deep.bs-datepicker .bs-datepicker-body
+{
+  background-color: white !important;
+  width: 320px;
+}
+

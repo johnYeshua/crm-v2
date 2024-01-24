@@ -1,0 +1,69 @@
+
+<div class="row m-4 mt-4">
+    <h3 class="card-title text-center border-bottom _border pb-4 text-secondary text_font">Account Info</h3>
+    <div class="col-xs-12" style="height: auto; display: inline-block">
+        <div class="row">
+            <div class="col-sm-8 pe-4" >
+                <div class="col-sm-4 ml-5">
+                    <img class="img_lg img_radius" [src]="imageUrl" alt="Profile Picture" *ngIf="imageUrl" />
+                </div>
+                <div class="col-sm-4 ml-5 mb-3 ">
+                    <input type="file"  (change)="onFileSelected($event)" accept="image/*" />
+                </div>
+                
+            </div>
+            <div class="col-sm-2 mt-4 p-5" *ngIf="canSuspend == true">
+                <button class="btn btn-light mb-5 border border-white rounded" (click)="suspendConfirm()" *ngIf="currentUser.accountNonLocked == true" ><i class="bi bi-person-fill-x text-warning">Suspend</i></button>
+                <button class="btn btn-success mb-3 btn-lg py-1 px-5 ms-4" (click)="activeConfirm()"  *ngIf="currentUser.accountNonLocked == false">Active</button>
+            </div>
+        </div>
+        <hr>
+        
+            <div class="row mt-4">
+                <div class="col-3">
+                    <label class="text_font text-secondary">User Name</label>
+                </div>
+                <div class="col-8">
+                    <label class="text_font text-secondary">{{this.currentUser.firstName + " " + this.currentUser.lastName}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <label class="text_font text-secondary">Email</label>
+                </div>
+                <div class="col-8">
+                    <label class="text_font text-secondary">{{this.currentUser.username}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <label class="text_font text-secondary">Phone</label>
+                </div>
+                <div class="col-8">
+                    <label class="text_font text-secondary">{{this.currentUser.phone}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <label class="text_font text-secondary">Role</label>
+                </div>
+                <div class="col-8">
+                    <label class="text_font text-secondary">{{this.currentUser.role | SNVApipeGetAccountRole}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <label class="text_font text-secondary">Status</label>
+                </div>
+                <div class="col-8">
+                    <label class="text_font text-secondary">{{this.currentUser.accountNonLocked | SNVApipeGetAccountStatus}}</label>
+                </div>
+            </div>
+        </div>
+    
+    <nav class="mt-5 pt-2">
+      <ul class="pagination justify-content-center mt-2 p-1">
+        <li class="page-item" ><a class="page-link" (click)="onBack()"><span aria-hidden="true">&laquo; Previous</span></a></li>
+      </ul>
+    </nav>
+</div>

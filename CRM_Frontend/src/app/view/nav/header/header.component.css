@@ -1,0 +1,25 @@
+nav .dropdown-menu .dropdown-item{
+    color: rgb(131, 131, 131) !important;
+    font-size: 14px !important;
+  }
+  
+nav .dropdown-menu .dropdown-item:hover{
+    background-color: #e1e1e1 !important;
+    color: #006eff !important;
+  }
+
+#nav_:hover{
+    background-color: #ececec !important;
+    color: rgb(0, 0, 0) !important;
+    border-radius: 0.5rem;
+} 
+
+#profile{
+    color: rgb(2, 175, 255) !important;
+    border-radius: 0.5rem;
+}
+
+#profile:hover{
+    color:  rgb(0, 134, 196) !important;
+    border-radius: 0.5rem;
+}

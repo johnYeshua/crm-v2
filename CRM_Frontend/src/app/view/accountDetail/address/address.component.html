@@ -1,0 +1,62 @@
+<h3 class="card-title text-center border-bottom _border pb-4 text-secondary text_font">Mail Address</h3>
+<div style="min-height: 260px" [formGroup]="countryForm">
+    <div class="row m-3 mt-5">
+        <div class="col-3 text-end">
+            <label class="text_font text-secondary">Line 1</label>
+        </div>
+        <div class="col-7 text-end">
+            <input class="form-control text_font" type="text" value="{{this.currentUser.addressLine1}}" id="addressLine1">
+        </div>
+    </div>
+    <div class="row m-3">
+        <div class="col-3 text-end">
+            <label class="text_font text-secondary">Line 2</label>
+        </div>
+        <div class="col-6 text-end">
+            <input class="form-control text_font" type="text" value="{{this.currentUser.addressLine2}}" id="addressLine2">
+        </div>
+    </div>
+    <div class="row m-3">
+        <div class="col-3 text-end">
+            <label class="text_font text-secondary">Country</label>
+        </div>
+        <div class="col-3">
+            <select id="addressCountry" class="form-select text_font" formControlName="country" (change)="handleCountryChange()">
+                <option>{{this.addressCountry}}</option>
+                <option *ngFor="let country of countries">{{country.label}}</option>
+            </select>
+        </div>
+        <div class="col-1 text-end">
+            <label class="text_font text-secondary">State</label>
+        </div>
+        <div class="col-3">
+            <select  id="addressState" class="form-select text_font" formControlName="state" (change)="handleStateChange()">
+                <option>{{this.addressState}}</option>
+                <option *ngFor="let state of states">{{ state.label}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row m-3">
+        <div class="col-3 text-end">
+            <label class="text_font text-secondary">City</label>
+        </div>
+        <div class="col-3">
+            <select  id="addressCity" class="form-select text_font" formControlName="lga">
+                <option>{{this.addressCity}}</option>
+                <option *ngFor="let lga of lgas">{{ lga.label }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row m-3 mb-5">
+        <div class="col-3 text-end">
+            <label class="text_font text-secondary">ZipCode</label>
+        </div>
+        <div class="col-4 text-end">
+            <input class="form-control text_font" type="text" value="{{this.currentUser.addressZipCode}}" id="addressZipCode">
+        </div>
+    </div>
+    <div id="errorMessage"></div>
+</div>
+<div class="col-sm-12 text-end mt-4 pt-2">
+    <button class="btn btn-primary mb-3 btn-lg py-1 px-5 ms-4" (click)="updateAddress()">Update</button>
+</div>

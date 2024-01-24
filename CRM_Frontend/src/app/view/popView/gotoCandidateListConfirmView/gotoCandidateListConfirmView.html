@@ -1,0 +1,13 @@
+<div class="card text_font _border bg-dark text-secondary">
+    <label class="text_middle mt-3 pb-2 border-bottom _border">{{message}}</label>
+    <div class="text-danger" [innerHtml]="subMsg"></div>
+    <label class="text_middle mt-2">Do You Want To Go To Candidate List or Stay In Here?</label>
+    <div class="row m-3">
+        <div class="col-6">
+            <button class="btn btn-success" id="noButton" style="width: 10em" (click)="bsModalRef.hide()">No</button>
+        </div>
+        <div class="col-6">
+            <button class="btn btn-danger" id="yesButton"  style="width: 10em"  (click)="gotoCandidateList()" >Yes</button>
+        </div>
+    </div>
+</div>

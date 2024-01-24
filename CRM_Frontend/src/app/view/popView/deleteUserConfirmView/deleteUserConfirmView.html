@@ -1,0 +1,12 @@
+<div class="card text_font _border bg-light">
+  <label class="text_middle text-secondary m-2">{{'Are You Sure to ' + message + ' This User?'}}</label>
+  <label class="text_middle text-secondary m-2">{{user.username}}</label>
+  <div class="row m-3">
+    <div class="col-6">
+      <button class="btn btn-success" id="noButton" style="width: 10em" (click)="bsModalRef.hide()">No</button>
+    </div>
+    <div class="col-6">
+      <button class="btn btn-danger" id="yesButton"  style="width: 10em"  (click)="deleteConfirm()" >Yes</button>
+    </div>
+  </div>
+</div>

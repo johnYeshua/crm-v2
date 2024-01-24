@@ -1,0 +1,16 @@
+.bg {
+    background-image: rgba(255,255,255,0.6);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index:9;
+  }
+  
+  .blur {
+    background: rgba(255, 255, 255, 0.7); 
+    /* filter: blur(0.5px); */
+    border-right: 1px solid whitesmoke;
+  }
+  
+
+  

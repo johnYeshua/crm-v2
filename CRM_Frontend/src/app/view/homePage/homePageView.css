@@ -1,0 +1,73 @@
+/* ===================================== Import Variables ================================== */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
+@import url(https://fonts.googleapis.com/css?family=Arimo:300,400,400italic,700,700italic);
+/* ===================================== Basic CSS ==================================== */
+
+
+.box
+{
+    height: 500px;
+    padding: 20px;
+    border: none;
+    max-width: 100%;
+}
+
+._task{
+  background-color: #f8f9fa;
+  color: #929292 !important;
+  padding: 2px;
+  border: none !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 27px !important;
+}
+
+#text_todo{
+  color: #adb5bd !important;
+  font-style: italic !important;
+}
+  /* Style the input and button */
+  input {
+    width: 70%;
+    padding: 10px;
+    margin-right: 10px;
+  }
+
+  button {
+    /* background-color: #419afa;
+    color: white; */
+  }
+
+  /* Style the list */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    margin: 5px 0;
+    border-radius: 5px;
+  }
+
+  /* button.delete {
+    background-color: #dc3545;
+  } */
+
+  hr.animated {
+    border: none;
+    height: 2px;
+    background-color: #000;
+    position: relative;
+    animation: expandLine 2s ease-out forwards;
+  }
+
+  @keyframes expandLine {
+    from {width: 0;}
+    to {width: 100%;}
+  }
+
+

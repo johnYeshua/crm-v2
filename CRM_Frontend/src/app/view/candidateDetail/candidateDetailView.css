@@ -1,0 +1,42 @@
+::ng-deep.bs-datepicker
+{
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+  font-family: "courier new", courier, monospace;
+  font-weight: 800;
+}
+
+::ng-deep.bs-datepicker .bs-datepicker-body
+{
+  background-color: white !important;
+  width: 320px;
+}
+
+
+[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  outline: 0;
+  background-color: transparent;
+  width: 100%;
+}
+[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: #eee;
+}
+[type="range" i]::-webkit-slider-container {
+  height: 20px;
+  overflow: hidden;
+}
+[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #4ff;
+  border: 1px solid transparent;
+  margin-top: -8px;
+  border-image: linear-gradient(#4ff,#4ff) 0 fill / 8 20 8 0 / 0px 0px 0 2000px;
+}

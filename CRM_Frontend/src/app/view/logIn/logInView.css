@@ -1,0 +1,15 @@
+.box{
+  /* https://www.snva.com/assets/img/images-tech/Career_Page/3.jpeg */
+  background:url(../../../assets/images/bg-04-blur.jpg);
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center;
+  /* filter: blur(0.5px); */
+  position:relative;
+  z-index:2;
+  overflow:hidden;
+}
+
+.i{
+  font-size: 70px;
+}

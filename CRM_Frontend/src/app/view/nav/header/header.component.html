@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg text-dark _text bg-light pb-4 border border-bottom _border">
+<div class="container-fluid justify-content-between">
+  <div class="collapse navbar-collapse" id="navbar">
+    <!-- <label class=" title" routerLink=""> -->
+       <div class="navbar-header">
+          <a class="navbar-brand fst-italic fw-bolder fs-2 text-primary">SNVA CRM</a>
+       </div>
+    <!-- </label>  -->
+    <ul class="navbar-nav mb-2 ml-2 mb-lg-0">
+      <li class="nav-item dropdown " style="caret-color: black;" id="nav_">
+        <a class="nav-link dropdown-toggle ms-4 text_middle text_font" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          ManageTools
+        </a>
+        <div class="dropdown-menu bg-light text-muted _border" aria-labelledby="navbarSuperDropdownMenuLink" >
+          <a class="dropdown-item text_font text-muted" (click)="showAddNewUser()" *ngIf="canAddAccount==true" >Add New User</a>
+          <a class="dropdown-item text_font text-muted" (click)="accountlist()"    *ngIf="canAddAccount==true" >Manage Users</a>
+          <a class="dropdown-item text_font text-muted" (click)="newCandidate()"   *ngIf="addCandidate==true" >New Candidate</a>
+          <a class="dropdown-item text_font text-muted" (click)="candidatelist()" >Manage Candidate</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown " style="caret-color: black;" id="nav_">
+        <a class="nav-link dropdown-toggle ms-4 text_middle text_font"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          QuickLink
+        </a>
+        <div class="dropdown-menu bg-light text-muted _border" aria-labelledby="navbarSuperDropdownMenuLink">
+          <a class="dropdown-item text_font text-muted" (click)="goDashboard()" >MyDashboard</a>
+          <a class="dropdown-item text_font text-muted" (click)="myAccount()" >MyAccount</a>
+        </div>
+      </li>
+    </ul>
+    <span class="nav-item dropdown ms-auto me-4" style="caret-color: black;" id="profile">
+      <a class="nav-link dropdown-toggle ms-4 text_font text_middle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bi bi-person-circle"></i> {{userName}}
+      </a>
+      <div class="dropdown-menu dropdown-menu-end bg-light text-muted _border" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item text_font" (click)="myAccount()" >My Account</a>
+        <a class="dropdown-item text_font" routerLink="" >Message</a>
+        <a class="dropdown-item text_font" (click)="logout()" >Log Out</a>
+      </div>
+    </span>
+  </div>
+</div>
+</nav>

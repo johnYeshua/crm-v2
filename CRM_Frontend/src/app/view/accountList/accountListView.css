@@ -1,0 +1,31 @@
+._txt{
+  font-size: 14px;
+  color: #fb3333;
+}
+
+h4{
+  color: #24292f;
+}
+
+._txt:hover{
+  color: #eb0000;
+}
+
+#add_acc:hover{
+  background-color: rgb(2, 123, 0) !important;
+}
+
+li.page-item.list-group-item{
+  padding: 0 !important;
+  border: none !important;
+}
+
+.nav-item.dropdown .dropdown-menu .dropdown-item{
+  color: rgb(131, 131, 131) !important;
+  font-size: 12px;
+}
+
+.nav-item.dropdown .dropdown-menu .dropdown-item:hover{
+  background-color: #e1e1e1 !important;
+  color: rgb(0, 0, 0) !important;
+}

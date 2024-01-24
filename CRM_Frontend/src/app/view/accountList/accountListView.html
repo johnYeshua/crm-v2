@@ -1,0 +1,101 @@
+<!-- <div class="container mt-4 mb-4 pt-4" style="min-height: 800px"> -->
+  <div class="row mt-4 mb-4 pt-4 justify-content-center">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <!-- <div class="card cardBackGround border"> -->
+        <div class="row text-center m-0" >
+          <div class="row row-cols-4 ml-0 p-0">
+            <div class="col m-0 p-0 pl-0 pt-0"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <!-- <i class="bi bi-person-add"></i> -->
+            <div class="col pr-0 pt-0 bg-success border rounded mb-2" id="add_acc">
+              <a 
+                class="link-light text-decoration-none" 
+                (click)="showAddNewAccountView()" 
+                *ngIf="canAddAccount==true"> <i class="bi bi-person-add fs-3"></i>   Add account</a>
+            </div>
+          </div>
+          
+         <div class="responsive fs-6 bg-light border rounded _border p-0 py-0 mb-2">
+          
+          <table class="table table-light m-0 p-0">
+             
+            <thead class="text-start pl-0">
+              <tr>
+                <th scope="col " class="_txt">#</th>
+                <th scope="col" class="_txt">Username</th>
+                <th scope="col" class="_txt">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fst-normal fs-6 text-start" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{currentRole}}
+                    </a>
+                    <ul class="dropdown-menu fst-normal" aria-labelledby="navbarDropdownMenuLink">
+                      <li class="dropdown-item" *ngFor="let s of menuData.USER_ROLE" (click)="filterSetRole(s)">
+                        {{s}}
+                      </li>
+                    </ul>
+                  </li>
+                </th>
+                <th scope="col" class="_txt">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fst-normal fs-6 text-start" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{currentStatus}}
+                    </a>
+                    <ul class="dropdown-menu fst-normal" aria-labelledby="navbarDropdownMenuLink">
+                      <li class="dropdown-item" *ngFor="let s of menuData.USER_STATUS" (click)="filterSetStatus(s)">
+                        {{s}}
+                      </li>
+                    </ul>
+                  </li>
+                </th>
+             </tr>
+            </thead>
+           <!-- add horizontal line here ...  -->
+            <tbody class="text-start">
+              <tr *ngFor="let account of showAccountList;" (click)="showAccountDetail(account.userId)">
+                  <td scope="row" [ngStyle]="{backgroundColor: account.userId % 2 === 0 ? '#f0f0f0' : '#faf7f7', color : '#656D76'}">{{account.userId}}</td>
+                  <td [ngStyle]="{backgroundColor: account.userId % 2 === 0 ? '#f0f0f0' : '#faf7f7', color : '#656D76'}">{{account.firstName + ' ' + account.lastName | SNVApipeStringCutOff:12}}</td>
+                  <td [ngStyle]="{backgroundColor: account.userId % 2 === 0 ? '#f0f0f0' : '#faf7f7', color : '#656D76'}"> 
+                    <i class="bi "  *ngIf="this.roleCheck.getFrontendRoleType(account.role) == 'SuperAdmin'"></i>
+                    <i class="bi " *ngIf="this.roleCheck.getFrontendRoleType(account.role) == 'Admin'"     ></i>
+                    <i class="bi " *ngIf="this.roleCheck.getFrontendRoleType(account.role) == 'User'"      ></i>
+                    {{this.roleCheck.getFrontendRoleName(account.role)}} 
+                  </td>
+                  
+                  <td [ngStyle]="{backgroundColor: account.userId % 2 === 0 ? '#f0f0f0' : '#faf7f7', color : '#656D76'}"> {{this.roleCheck.getUserStatus(account.accountNonLocked)}}</td>
+                  <!-- <td [ngStyle]="{backgroundColor: account.userId % 2 === 0 ? '#f0f0f0' : '#faf7f7', color : '#656D76'}"> <i class="bi bi-search" (click)="showAccountDetail(account.userId)"></i> </td> -->
+              </tr>
+            </tbody>
+          </table>
+          <!-- <div class="row m-2 text-secondary justify-content-center">
+            <div class="col-1 mt-2"><i class="bi bi-arrow-left-circle" (click)="prevPage()"></i></div>
+            <div class="col-1 mt-2"> {{page}} </div>
+            <div class="col-1 mt-2"><i class="bi bi-arrow-right-circle" (click)="nextPage()"></i></div>
+          </div> -->
+          <!-- <figure class="text-center">
+            <blockquote class="blockquote">
+              <p>A well-known quote, contained in a blockquote element.</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </figcaption>
+          </figure> -->
+          <figure class="text-center pt-4 pl-2">
+            <figcaption class="blockquote-footer text-start fst-italic text-info" style="font-size: 14px;">
+              Manage Users
+            </figcaption>
+          </figure>
+         </div>
+          <nav>
+            <ul class="pagination list-group list-group-horizontal justify-content-center" >
+              <li class="page-item list-group-item"><a class="page-link" (click)="prevPage()"><span aria-hidden="true">&laquo;</span></a></li>
+              <li class="page-item list-group-item" *ngFor="let p of pages"><a class="page-link" (click)="clickedPage(p)" >{{p}}</a></li>
+              <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">{{page}}</a></li> -->
+              <li class="page-item list-group-item"><a class="page-link" (click)="nextPage()"><span aria-hidden="true">&raquo;</span></a></li>
+            </ul>
+          </nav>
+        </div>
+    </div>
+  </div>
+
